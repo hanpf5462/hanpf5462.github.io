@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>深入理解Linux内核-进程</title>
+      <link href="2020/10/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B/"/>
+      <url>2020/10/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><ul><li>讲述进程的静态特性，进程切换，创建和撤销，多线程的支持等<a id="more"></a><h2 id="进程、轻量级进程和线程"><a href="#进程、轻量级进程和线程" class="headerlink" title="进程、轻量级进程和线程"></a>进程、轻量级进程和线程</h2></li><li>进程：程序执行时的一个实例，可以看作充分描述程序已经执行到何种程度的数据结构的汇集。</li><li>进程有自己独立的堆栈，所以子进程对内存单元的修改，对父进程是不可见的。</li><li>Linux使用轻量级进程，对多线程应用进行支持，即共享地址空间、打开的文件等，其中一个修改，另一个可以立即看到。<h2 id="进程描述符"><a href="#进程描述符" class="headerlink" title="进程描述符"></a>进程描述符</h2></li><li>包含一个进程相关的所有信息，task_struct类型结构体。</li><li>进程描述符<br>  <img src="/2020/10/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B/task.png" alt="进程描述符" loading="lazy"><h3 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h3></li><li>可运行状态（TASK_RUNNING）<ul><li>正在CPU执行或准备执行</li></ul></li><li>可中断状态（TASK_INTERRUPTIBLE）<ul><li>进程挂起直到某个条件。中断或信号唤醒都可以。</li></ul></li><li>不可中断状态（TASK_UNINTERRUPTIBLE）<ul><li>信号不可改变状态，一些特殊情况会用到。如进程打开某个设备文件，驱动探测设备时会用到，完成前都不可被中断，否则可能会处于不可预知状态。</li></ul></li><li>暂停状态（TASK_STOP）<ul><li>进程的执行被暂停，SIGSTOP、SIGTSTP、SIGTTIN、SIGTTOU信号，进入暂停状态</li></ul></li><li>跟踪状态（TASK_TRACED）<ul><li>进程被debugger暂停，当一个进程被另一个进程监控时，如<code>ptrace()</code>监控测试程序，任何信号都可以把这个进程置为TASK_TRACED。</li></ul></li><li>僵死状态（EXIT_ZOMBIE）<ul><li>子进程退出，但父进程未回收资源，处于僵死状态，可能父进程会需要。可以使用<code>wait4()</code>或<code>waitpid()</code>回收资源。</li></ul></li><li>僵死撤销状态（EXIT_DEAD）<ul><li>防止其他线程在同一进程上执行wait()类似回收，将僵死状态改为僵死撤销状态，防止竞争。</li></ul></li><li>state字段赋值：  <pre class="line-numbers language-c" data-language="c"><code class="language-c">p<span class="token operator">-></span>state <span class="token operator">=</span> TASK_RUNNING<span class="token punctuation">;</span><span class="token comment">/* 内核中可能采用操作宏防止指令混合 */</span><span class="token function">set_task_state</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">set_current_state</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li></ul><hr><p>今日读到88页<br>2020-10-28</p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux内核学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> 内核 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 进程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深入理解linux内核-内存寻址</title>
       <link href="2020/10/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3linux%E5%86%85%E6%A0%B8-%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80/"/>
       <url>2020/10/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3linux%E5%86%85%E6%A0%B8-%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80/</url>
