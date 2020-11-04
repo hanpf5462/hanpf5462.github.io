@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title>vimdiff的使用</title>
+      <link href="2020/11/04/vimdiff%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+      <url>2020/11/04/vimdiff%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vimdiff命令的使用"><a href="#vimdiff命令的使用" class="headerlink" title="vimdiff命令的使用"></a>vimdiff命令的使用</h1><ul><li><p>vimdiff 等同于 vim -d 命令，即 Vim 编辑器的 diff 模式。</p></li><li><p>该命令后面通常会接两个或多个文件名作为参数，这些文件会同时在 Vim 编辑器的分割窗口中打开，并高亮显示文件中内容有差异的部分。同时该模式下还提供部分快捷按键用于完成文件内容的合并等操作。</p></li><li><p>在linux下经常需要对比操作，尤其是不方便在windows下编码的情况下，beyondcompare又不是很方便，所以推荐使用vimdiff，高效对比方法，快速对比并和入，提升工作效率。</p><h2 id="启动vimdiff"><a href="#启动vimdiff" class="headerlink" title="启动vimdiff"></a>启动vimdiff</h2></li><li><p>如现在有两个不同的文件,file1,file2</p><ul><li>内容分别为<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ cat file1Line oneLine 2Line threeLine 4Line     5Line 6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ cat file2Line 1Line 2Line 3Line 4Line 5Line 6Line 7Line 8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul></li><li><p>两个文件对比执行结果画面</p>  <pre class="line-numbers language-c" data-language="c"><code class="language-c">$ vimdiff file1 file2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>  <img src="/2020/11/04/vimdiff%E7%9A%84%E4%BD%BF%E7%94%A8/diff_file1_file2.png" alt="vimdiff图片" loading="lazy"><br>  屏幕垂直分割两个屏幕，可以看到比较的结果。</p></li><li><p>两种进入vimdiff的方式</p><ul><li>直接<code>vimdiff file1 file2</code></li><li>在vim编辑文件，然后输入以下命令进入diff模式：<code>:vertical diffsplit FILE_RIGHT</code><h2 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h2></li></ul></li><li><p><code>],c</code>：跳转到下一个差异点</p></li><li><p><code>[,c</code>：跳转到上一个差异点</p></li><li><p><code>Ctrl-w,l</code>：光标切换到右侧的窗口</p></li><li><p><code>Ctrl-w,h</code>：光标切换到左侧的窗口</p></li><li><p><code>Ctrl-w,w</code>：光标在两个窗口间彼此切换</p><h2 id="内容合并"><a href="#内容合并" class="headerlink" title="内容合并"></a>内容合并</h2></li><li><p><code>dp</code>：（diff put）将左侧的内容合并到右侧</p></li><li><p><code>do</code>：（diff obtain）将右侧的内容拉取到左侧</p><h2 id="同时操作两个文件"><a href="#同时操作两个文件" class="headerlink" title="同时操作两个文件"></a>同时操作两个文件</h2></li><li><p>vimdiff 实际是vim编辑器的diff模式，因此vim快捷键同样适用</p></li><li><p>常用命令如下：</p><ul><li><code>:qa</code>：退出所有文件</li><li><code>:wa</code>：保存所有文件</li><li><code>:wqa</code>：保存并退出所有文件</li><li><code>qa!</code>：强制退出（不保存）所有文件</li><li><code>z o</code>：查看被折叠的内容</li><li><code>z c</code>：重新折叠<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2></li></ul></li><li><p>其他操作以及使用，请学习vim基本使用。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> vim相关教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> vim </tag>
+            
+            <tag> 对比 </tag>
+            
+            <tag> 工具 </tag>
+            
+            <tag> 命令 </tag>
+            
+            <tag> 效率 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深入理解Linux内核-进程</title>
       <link href="2020/10/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B/"/>
       <url>2020/10/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B/</url>
